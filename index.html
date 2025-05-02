@@ -4,305 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人博客</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f6f7fb 0%, #f1f3f9 100%);
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .profile-img {
-            transition: transform 0.3s ease;
-        }
-        
-        .profile-img:hover {
-            transform: scale(1.05);
-        }
-        
-        .tech-stack {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 9999px;
-            color: #3b82f6;
-            font-size: 0.875rem;
-            margin: 0.25rem;
-        }
-        
-        .social-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-3px);
-        }
-        
-        .photo-card {
-            transition: all 0.3s ease;
-        }
-        
-        .photo-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-link {
-            position: relative;
-            padding: 0.5rem 1rem;
-            color: #4b5563;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #3b82f6;
-        }
-
-        .nav-link.active {
-            color: #3b82f6;
-        }
-
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #3b82f6;
-        }
-
-        .page {
-            display: none;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .article-card {
-            transition: all 0.3s ease;
-        }
-
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-    </style>
 </head>
-<body class="min-h-screen">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-center space-x-8 py-4">
-                <a href="#" class="nav-link active" data-page="home">主页</a>
-                <a href="#" class="nav-link" data-page="articles">我的文章</a>
-                <a href="#" class="nav-link" data-page="about">关于我</a>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="images/lufei01.jpeg" alt="头像" class="avatar">
+                <h1>strawqqhat</h1>
+                <p class="title">Java后端程序员</p>
+                
+                <div class="social-links">
+                    <a href="https://github.com/strawqqhat" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.zhihu.com/people/strawqqhat" class="social-link" target="_blank"><i class="fab fa-zhihu"></i></a>
+                    <a href="https://blog.csdn.net/strawqqhat" class="social-link" target="_blank"><i class="fas fa-blog"></i></a>
+                    <a href="mailto:885228764@qq.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
-        </div>
-    </nav>
 
-    <!-- Home Page -->
-    <div id="home" class="page active">
-        <div class="container mx-auto px-4 py-12 max-w-6xl">
-            <!-- Header Section -->
-            <header class="text-center mb-16">
-                <div class="w-40 h-40 mx-auto mb-8 rounded-full overflow-hidden border-4 border-white shadow-xl profile-img">
-                    <img src="1.jpg" alt="Profile" class="w-full h-full object-cover">
-                </div>
-                <h1 class="text-4xl font-bold text-gray-800 mb-3">你的姓名</h1>
-                <p class="text-gray-600 text-lg mb-4">Java后端开发工程师</p>
-                <div class="flex flex-wrap justify-center gap-2">
-                    <span class="tech-stack">Spring Boot</span>
-                    <span class="tech-stack">Spring Cloud</span>
-                    <span class="tech-stack">MySQL</span>
-                    <span class="tech-stack">Redis</span>
-                    <span class="tech-stack">RabbitMQ</span>
-                </div>
-            </header>
+            <nav class="navbar">
+                <ul>
+                    <li class="active"><a href="#home">Home</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-            <!-- Introduction Section -->
-            <section class="max-w-3xl mx-auto mb-16">
-                <div class="glass-card rounded-xl shadow-lg p-8">
-                    <h2 class="text-3xl font-semibold text-gray-800 mb-6">关于我</h2>
-                    <div class="space-y-6">
-                        <p class="text-gray-700 leading-relaxed">
-                            大家好，我是[你的姓名]，一名拥有[X年]经验的Java后端开发工程师，专注于高并发、分布式系统设计与性能优化。熟练掌握Spring Boot、Spring Cloud、MySQL、Redis、RabbitMQ等技术栈，具备扎实的编程基础和良好的系统架构能力。
-                        </p>
-                        <p class="text-gray-700 leading-relaxed">
-                            在过往项目中，我曾主导设计并实现了多个高流量系统，如红包雨活动系统、秒杀系统等，通过Redis Lua脚本、消息队列异步化、分库分表等方案有效应对百万级QPS挑战。注重代码质量与可维护性，熟悉DDD领域驱动设计和微服务治理，擅长用技术手段解决复杂业务问题。
-                        </p>
-                        <p class="text-gray-700 leading-relaxed">
-                            我热爱技术钻研，保持对新技术（如云原生、AI工程化）的持续学习，并通过技术博客（可附链接）分享实践经验。性格上，我兼具程序员的严谨逻辑与团队协作的沟通意识，期待在更具挑战的项目中创造价值。
-                        </p>
+        <main>
+            <section id="home" class="active-section">
+                <div class="publications-preview">
+                    <h2>代表性论文</h2>
+                    <div class="publication-card">
+                        <h3>论文标题 1</h3>
+                        <p class="authors">作者列表</p>
+                        <p class="venue">发表期刊/会议</p>
+                        <p class="year">2024</p>
+                    </div>
+                    <div class="publication-card">
+                        <h3>论文标题 2</h3>
+                        <p class="authors">作者列表</p>
+                        <p class="venue">发表期刊/会议</p>
+                        <p class="year">2023</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Photo Gallery Section -->
-            <section class="mb-16">
-                <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">生活照片</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="photo-card bg-white rounded-xl shadow-md overflow-hidden">
-                        <img src="2.jpg" alt="Photo 1" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="photo-card bg-white rounded-xl shadow-md overflow-hidden">
-                        <img src="3.jpg" alt="Photo 2" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="photo-card bg-white rounded-xl shadow-md overflow-hidden">
-                        <img src="4.jpg" alt="Photo 3" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="photo-card bg-white rounded-xl shadow-md overflow-hidden">
-                        <img src="5.jpg" alt="Photo 4" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="photo-card bg-white rounded-xl shadow-md overflow-hidden">
-                        <img src="6.jpg" alt="Photo 5" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="photo-card bg-white rounded-xl shadow-md overflow-hidden">
-                        <img src="7.jpg" alt="Photo 6" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="photo-card bg-white rounded-xl shadow-md overflow-hidden">
-                        <img src="8.jpg" alt="Photo 7" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="photo-card bg-white rounded-xl shadow-md overflow-hidden">
-                        <img src="9.jpg" alt="Photo 8" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="photo-card bg-white rounded-xl shadow-md overflow-hidden">
-                        <img src="10.jpg" alt="Photo 9" class="w-full h-64 object-cover">
+            <section id="publications">
+                <!-- Publications 页面内容将在后续添加 -->
+            </section>
+
+            <section id="about">
+                <div class="about-content">
+                    <h2>关于我</h2>
+                    <div class="about-text">
+                        <p>✨ 大家好，我是 strawqqhat，一个写了 10 年代码但头发依然健在的 Java 程序员！</p>
+                        
+                        <p>江湖人称 "码农界的咖啡因战士"，擅长用 System.out.println("Hello World"); 开启美好的一天，再用 try-catch 接住生活的暴击。过去十年，我和 Java 从 "初恋" 到 "老夫老妻"，经历了 Spring 全家桶 的洗礼，也曾在 JVM 调优 的深海里反复横跳。</p>
+                        
+                        <p>我的日常：写 Bug → 修 Bug → 假装没写过 Bug，但偶尔也会写出让同事直呼 "这代码居然能跑？" 的神奇逻辑。热爱 开源社区，梦想是某天能写出一款让全世界程序员少加班的框架（目前还在梦里）。</p>
+                        
+                        <p>技术信仰："代码可以重构，但咖啡不能停！" 🚀☕</p>
+                        
+                        <p class="ps">（P.S. 如果你发现这段自我介绍有 Bug，欢迎 PR，但请温柔一点，毕竟我是个 "资深" 但依然会犯低级错误的码农 😂）</p>
                     </div>
                 </div>
             </section>
-
-            <!-- Social Media Section -->
-            <section class="text-center">
-                <h2 class="text-3xl font-semibold text-gray-800 mb-8">社交媒体</h2>
-                <div class="flex justify-center space-x-8">
-                    <a href="#" class="social-icon text-gray-600 hover:text-blue-500">
-                        <i class="fab fa-github text-4xl"></i>
-                    </a>
-                    <a href="#" class="social-icon text-gray-600 hover:text-blue-400">
-                        <i class="fab fa-linkedin text-4xl"></i>
-                    </a>
-                    <a href="#" class="social-icon text-gray-600 hover:text-red-500">
-                        <i class="fab fa-blog text-4xl"></i>
-                    </a>
-                    <a href="#" class="social-icon text-gray-600 hover:text-green-500">
-                        <i class="fab fa-weixin text-4xl"></i>
-                    </a>
-                </div>
-            </section>
-        </div>
+        </main>
     </div>
-
-    <!-- Articles Page -->
-    <div id="articles" class="page">
-        <div class="container mx-auto px-4 py-12 max-w-4xl">
-            <h1 class="text-4xl font-bold text-gray-800 mb-8 text-center">我的文章</h1>
-            <div class="space-y-8">
-                <div class="article-card bg-white rounded-xl shadow-md p-6">
-                    <h2 class="text-2xl font-semibold text-gray-800 mb-2">高并发系统设计实践</h2>
-                    <p class="text-gray-600 mb-4">2023-12-01</p>
-                    <p class="text-gray-700 mb-4">分享我在设计高并发系统时的一些经验和最佳实践，包括Redis Lua脚本、消息队列异步化、分库分表等方案的应用。</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-600">阅读更多 →</a>
-                </div>
-                <div class="article-card bg-white rounded-xl shadow-md p-6">
-                    <h2 class="text-2xl font-semibold text-gray-800 mb-2">微服务架构设计指南</h2>
-                    <p class="text-gray-600 mb-4">2023-11-15</p>
-                    <p class="text-gray-700 mb-4">深入探讨微服务架构的设计原则、最佳实践和常见问题解决方案，帮助团队更好地实施微服务。</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-600">阅读更多 →</a>
-                </div>
-                <div class="article-card bg-white rounded-xl shadow-md p-6">
-                    <h2 class="text-2xl font-semibold text-gray-800 mb-2">DDD领域驱动设计实战</h2>
-                    <p class="text-gray-600 mb-4">2023-10-20</p>
-                    <p class="text-gray-700 mb-4">通过实际项目案例，分享如何应用DDD思想来设计和实现复杂的业务系统。</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-600">阅读更多 →</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- About Page -->
-    <div id="about" class="page">
-        <div class="container mx-auto px-4 py-12 max-w-3xl">
-            <h1 class="text-4xl font-bold text-gray-800 mb-8 text-center">关于我</h1>
-            <div class="glass-card rounded-xl shadow-lg p-8">
-                <div class="space-y-6">
-                    <p class="text-gray-700 leading-relaxed">
-                        大家好，我是[你的姓名]，一名拥有[X年]经验的Java后端开发工程师，专注于高并发、分布式系统设计与性能优化。熟练掌握Spring Boot、Spring Cloud、MySQL、Redis、RabbitMQ等技术栈，具备扎实的编程基础和良好的系统架构能力。
-                    </p>
-                    <p class="text-gray-700 leading-relaxed">
-                        在过往项目中，我曾主导设计并实现了多个高流量系统，如红包雨活动系统、秒杀系统等，通过Redis Lua脚本、消息队列异步化、分库分表等方案有效应对百万级QPS挑战。注重代码质量与可维护性，熟悉DDD领域驱动设计和微服务治理，擅长用技术手段解决复杂业务问题。
-                    </p>
-                    <p class="text-gray-700 leading-relaxed">
-                        我热爱技术钻研，保持对新技术（如云原生、AI工程化）的持续学习，并通过技术博客（可附链接）分享实践经验。性格上，我兼具程序员的严谨逻辑与团队协作的沟通意识，期待在更具挑战的项目中创造价值。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Navigation functionality
-            const navLinks = document.querySelectorAll('.nav-link');
-            const pages = document.querySelectorAll('.page');
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetPage = link.getAttribute('data-page');
-
-                    // Update active states
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
-
-                    pages.forEach(page => {
-                        page.classList.remove('active');
-                        if (page.id === targetPage) {
-                            page.classList.add('active');
-                        }
-                    });
-                });
-            });
-
-            // Add fade-in animation for sections
-            const sections = document.querySelectorAll('section');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            sections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(20px)';
-                section.style.transition = 'all 0.6s ease-out';
-                observer.observe(section);
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html> 
